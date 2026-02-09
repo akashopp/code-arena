@@ -11,6 +11,7 @@ import java.util.Map;
 @Builder
 public class GenericResponse {
     private HttpStatus httpStatus;
+    private String status;
     private String message;
     private Object data;
 
@@ -19,6 +20,10 @@ public class GenericResponse {
         map.put("message", message);
         if(!ObjectUtils.isEmpty(data)) {
             map.put("data", data);
+        }
+
+        if(!message.isEmpty()) {
+            map.put("status", status);
         }
 
         return new ResponseEntity<>(map, httpStatus);

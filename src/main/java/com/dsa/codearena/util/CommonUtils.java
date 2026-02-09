@@ -21,4 +21,13 @@ public class CommonUtils {
                 .build();
         return genericResponse.create();
     }
+
+    public static ResponseEntity<?> createErrorResponse(String message, String status, HttpStatus httpStatus) {
+        GenericResponse genericResponse = GenericResponse.builder()
+                .message(message)
+                .status(status)
+                .httpStatus(httpStatus)
+                .build();
+        return genericResponse.create();
+    }
 }
