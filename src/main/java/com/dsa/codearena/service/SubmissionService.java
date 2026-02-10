@@ -1,7 +1,9 @@
 package com.dsa.codearena.service;
 
 import com.dsa.codearena.dto.SubmissionDto;
+import com.dsa.codearena.entity.Submission;
 
 public interface SubmissionService {
-    Boolean submitCode(SubmissionDto submission);
+    Submission submitCode(SubmissionDto submission) throws Exception;
+    Submission getSubmissionById(Integer id) throws Exception;
 }
