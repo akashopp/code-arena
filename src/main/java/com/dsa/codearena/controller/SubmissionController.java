@@ -1,8 +1,11 @@
 package com.dsa.codearena.controller;
 
+import com.dsa.codearena.config.RabbitMQConfig;
 import com.dsa.codearena.dto.SubmissionDto;
+import com.dsa.codearena.entity.Submission;
 import com.dsa.codearena.service.SubmissionService;
 import com.dsa.codearena.util.CommonUtils;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,13 +20,13 @@ public class SubmissionController {
     @Autowired
     private SubmissionService submissionService;
 
-    @PostMapping("/submit-code")
-    public ResponseEntity<?> submitCode(@RequestBody SubmissionDto submission) {
-        Boolean submitCode = submissionService.submitCode(submission);
-        if(submitCode) {
-            return CommonUtils.createErrorResponse("Submitted the code successfully", "success", HttpStatus.CREATED);
-        }
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
 
-        return CommonUtils.createErrorResponse("Error in submitting the code", "failed", HttpStatus.INTERNAL_SERVER_ERROR);
+    @PostMapping("/submit-code")
+    public ResponseEntity<?> submitCode(@RequestBody SubmissionDto submission) throws Exception {
+        Submission submitCode = submissionService.submitCode(submission);
+        rabbitTemplate.convertAndSend(RabbitMQConfig.EXCHANGE, RabbitMQConfig.ROUTING_KEY, submitCode.getId());
+        return CommonUtils.createErrorResponse("Submitted the code successfully", "success", HttpStatus.CREATED);
     }
 }
