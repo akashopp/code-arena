@@ -9,10 +9,7 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/submissions")
@@ -27,6 +24,12 @@ public class SubmissionController {
     public ResponseEntity<?> submitCode(@RequestBody SubmissionDto submission) throws Exception {
         Submission submitCode = submissionService.submitCode(submission);
         rabbitTemplate.convertAndSend(RabbitMQConfig.EXCHANGE, RabbitMQConfig.ROUTING_KEY, submitCode.getId());
-        return CommonUtils.createErrorResponse("Submitted the code successfully", "success", HttpStatus.CREATED);
+        return CommonUtils.createBuildResponse("Submitted the code successfully", HttpStatus.CREATED, submitCode);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getSubmissionDetails(@PathVariable Integer id) throws Exception {
+        Submission submitCode = submissionService.getSubmissionById(id);
+        return CommonUtils.createBuildResponse("Fetch submission successfully", HttpStatus.OK, submitCode);
     }
 }
