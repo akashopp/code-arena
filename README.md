@@ -1,4 +1,4 @@
-# 🚀 CodeArena
+# CodeArena
 
 CodeArena is a full-stack algorithmic coding platform designed to simulate a competitive programming environment. It allows users to browse Data Structures and Algorithms (DSA) topics, view problem details, write code in an integrated editor, and submit solutions with real-time feedback.
 
