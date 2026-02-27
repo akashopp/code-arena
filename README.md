@@ -34,6 +34,7 @@ CodeArena is a full-stack algorithmic coding platform designed to simulate a com
 * Node.js (v18+) and npm
 * MySQL Server running locally
 * AWS Account (with S3 bucket and IAM user credentials)
+* Docker desktop running on background
 
 ### 1. Backend Setup (Spring Boot)
 1. Clone the repository and navigate to the backend directory.
