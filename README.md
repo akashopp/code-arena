@@ -36,7 +36,7 @@
 ### 1. Backend Setup (Spring Boot)
 1.  Navigate to the backend directory:
     ```bash
-    cd backend
+    cd codearena-backend
     ```
 2.  Configure your `src/main/resources/application.properties`:
     ```properties
@@ -63,7 +63,7 @@
 ### 2. Frontend Setup (React)
 1.  Navigate to the frontend directory:
     ```bash
-    cd frontend
+    cd codearena-frontend
     ```
 2.  Install dependencies:
     ```bash
