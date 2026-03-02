@@ -1,6 +1,6 @@
 # 🚀 CodeArena
 
-<img width="1854" height="930" alt="CodeArena Dashboard" src="https://github.com/user-attachments/assets/3dabc7f0-ca58-4608-b7a1-b908b27e4645" />
+<img width="949" height="489" alt="Screenshot 2026-03-03 at 1 24 18 AM" src="https://github.com/user-attachments/assets/97703047-7804-43a0-87f0-134281605159" />
 
 **CodeArena** is a full-stack algorithmic coding platform designed to simulate a high-performance competitive programming environment. It provides a seamless flow for users to browse DSA topics, write code in an integrated editor, and receive real-time execution feedback.
 
