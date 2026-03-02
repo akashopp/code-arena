@@ -55,3 +55,20 @@ CodeArena is a full-stack algorithmic coding platform designed to simulate a com
    spring.cloud.aws.credentials.secret-key=your_aws_secret_key
    spring.cloud.aws.region.static=ap-south-1 # Or your configured region
    spring.cloud.aws.s3.bucket=your-s3-bucket-name
+
+3. Run the application using Maven: ./mvnw spring-boot:run
+4. The backend will start on http://localhost:8080
+
+### 2. Frontend Setup (React)
+1. Navigate to the frontend directory.
+2. Install dependencies:
+Bash
+npm install
+
+3. (Optional) If your backend is running on a different port, update the baseURL in src/services/api.js.
+
+4. Start the development server:
+Bash
+npm run dev
+
+5. The frontend will be available at http://localhost:5173.
